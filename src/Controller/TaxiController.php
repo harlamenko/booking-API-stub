@@ -31,4 +31,28 @@ class TaxiController
         
         return $response;
     }
+
+    public function add(Request $request, ValidatorInterface $validator) {
+        $content = $request->getContent();
+        $object = new MTaxi(json_decode($content));
+        $errors = $validator->validate($object);
+        $result;
+        $code;
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        if (count($errors)) {
+            $humanized_errors = Validator::humanize($errors);
+            $code = Response::HTTP_BAD_REQUEST;
+            $result = json_encode($humanized_errors);
+        } else {
+            $code = Response::HTTP_OK;
+            $result = '{"id": ' . Taxi::aid . '}';
+        }
+
+        $response->setContent($result);
+        $response->setStatusCode($code);
+
+        return $response;
+    }
 }

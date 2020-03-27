@@ -13,3 +13,6 @@ delete-object:
 get-taxi:
    path: /get-taxi
    controller: App\Controller\TaxiController::get
+add-taxi:
+   path: /add-taxi
+   controller: App\Controller\TaxiController::add
