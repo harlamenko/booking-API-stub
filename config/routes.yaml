@@ -16,3 +16,6 @@ get-taxi:
 add-taxi:
    path: /add-taxi
    controller: App\Controller\TaxiController::add
+update-taxi:
+   path: /update-taxi
+   controller: App\Controller\TaxiController::update
