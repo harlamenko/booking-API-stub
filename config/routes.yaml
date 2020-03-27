@@ -1,3 +1,6 @@
 get-object:
    path: /get-object
-   controller: App\Controller\Object\GetController::get
+   controller: App\Controller\ObjectController::get
+add-object:
+   path: /add-object
+   controller: App\Controller\ObjectController::add

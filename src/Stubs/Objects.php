@@ -2,7 +2,8 @@
 namespace App\Stubs;
 
 class Objects {
-    static $stubObjects = [123 => '{
+    const oid = 123;
+    static $stubObjects = [Objects::oid => '{
         "phone_number": "+78888888888",
         "object_name": "Odnushka",
         "stars": 0,
