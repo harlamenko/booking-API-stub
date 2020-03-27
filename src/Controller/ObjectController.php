@@ -14,18 +14,20 @@ class ObjectController
     {
         $oid = $request->query->get('oid');
         $object;
+        $code;
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
         if (array_key_exists($oid, Objects::$stubObjects)) {
             $object = Objects::$stubObjects[$oid];
-            $response->setStatusCode(Response::HTTP_OK);
+            $code = Response::HTTP_OK;
         } else {
             $object = '"Not Found"';
-            $response->setStatusCode(Response::HTTP_NOT_FOUND);
+            $code = Response::HTTP_NOT_FOUND;
         }
         
         $response->setContent($object);
+        $response->setStatusCode($code);
         
         return $response;
     }
@@ -34,17 +36,22 @@ class ObjectController
         $content = $request->getContent();
         $object = new MObject(json_decode($content));
         $errors = $validator->validate($object);
+        $result;
+        $code;
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
         if (count($errors)) {
             $humanized_errors = Validator::humanize($errors);
-            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
-            $response->setContent(json_encode($humanized_errors));
+            $code = Response::HTTP_BAD_REQUEST;
+            $result = json_encode($humanized_errors);
         } else {
-            $response->setStatusCode(Response::HTTP_OK);
-            $response->setContent('{"id": ' . Objects::oid . '}');
+            $code = Response::HTTP_OK;
+            $result = '{"id": ' . Objects::oid . '}';
         }
+
+        $response->setContent($result);
+        $response->setStatusCode($code);
 
         return $response;
     }
@@ -52,6 +59,8 @@ class ObjectController
     public function update(Request $request, ValidatorInterface $validator) {
         $oid = $request->query->get('oid');
         $content = $request->getContent();
+        $result;
+        $code;
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
@@ -62,16 +71,19 @@ class ObjectController
         
             if (count($errors)) {
                 $humanized_errors = Validator::humanize($errors);
-                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
-                $response->setContent(json_encode($humanized_errors));
+                $code = Response::HTTP_BAD_REQUEST;
+                $result = json_encode($humanized_errors);
             } else {
-                $response->setStatusCode(Response::HTTP_OK);
-                $response->setContent('"Ok"');
+                $code = Response::HTTP_OK;
+                $result = '"Ok"';
             }
         } else {
-            $response->setStatusCode(Response::HTTP_NOT_FOUND);
-            $response->setContent('"Not Found"');
+            $code = Response::HTTP_NOT_FOUND;
+            $result = '"Not Found"';
         }
+
+        $response->setContent($result);
+        $response->setStatusCode($code);
 
         return $response;
     }
