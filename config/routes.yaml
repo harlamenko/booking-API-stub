@@ -7,3 +7,6 @@ add-object:
 update-object:
    path: /update-object
    controller: App\Controller\ObjectController::update
+delete-object:
+   path: /delete-object
+   controller: App\Controller\ObjectController::delete

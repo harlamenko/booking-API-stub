@@ -75,4 +75,26 @@ class ObjectController
 
         return $response;
     }
+
+    public function delete(Request $request)
+    {
+        $oid = $request->query->get('oid');
+        $content;
+        $code;
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        if (array_key_exists($oid, Objects::$stubObjects)) {
+            $content = '"Ok"';
+            $code = Response::HTTP_OK;
+        } else {
+            $content = '"Not Found"';
+            $code = Response::HTTP_NOT_FOUND;
+        }
+        
+        $response->setContent($content);
+        $response->setStatusCode($code);
+
+        return $response;
+    }
 }
