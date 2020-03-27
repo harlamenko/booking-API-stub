@@ -19,3 +19,6 @@ add-taxi:
 update-taxi:
    path: /update-taxi
    controller: App\Controller\TaxiController::update
+delete-taxi:
+   path: /delete-taxi
+   controller: App\Controller\TaxiController::delete

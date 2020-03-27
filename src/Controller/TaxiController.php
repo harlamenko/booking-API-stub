@@ -87,4 +87,26 @@ class TaxiController
 
         return $response;
     }
+
+    public function delete(Request $request)
+    {
+        $aid = $request->query->get('aid');
+        $content;
+        $code;
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        if (array_key_exists($aid, Taxi::$stubObjects)) {
+            $content = '"Ok"';
+            $code = Response::HTTP_OK;
+        } else {
+            $content = '"Not Found"';
+            $code = Response::HTTP_NOT_FOUND;
+        }
+        
+        $response->setContent($content);
+        $response->setStatusCode($code);
+
+        return $response;
+    }
 }
