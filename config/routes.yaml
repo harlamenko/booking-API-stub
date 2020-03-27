@@ -4,3 +4,6 @@ get-object:
 add-object:
    path: /add-object
    controller: App\Controller\ObjectController::add
+update-object:
+   path: /update-object
+   controller: App\Controller\ObjectController::update

@@ -40,19 +40,35 @@ class MObject {
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('phone_number', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('object_name', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('stars', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('phone_number', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('phone_number', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('object_name', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('object_name', new Assert\NotNull());
+
         $metadata->addPropertyConstraint('stars', new Assert\PositiveOrZero());
-        $metadata->addPropertyConstraint('host_name', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('country', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('city', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('street', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('house_number', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('stars', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('host_name', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('host_name', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('country', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('country', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('city', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('city', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('street', new Assert\Length(['min' => 1]));
+        $metadata->addPropertyConstraint('street', new Assert\NotNull());
+
         $metadata->addPropertyConstraint('house_number', new Assert\Positive());
-        $metadata->addPropertyConstraint('guests_count', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('house_number', new Assert\NotNull());
+
         $metadata->addPropertyConstraint('guests_count', new Assert\Positive());
-        $metadata->addPropertyConstraint('price', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('guests_count', new Assert\NotNull());
+
         $metadata->addPropertyConstraint('price', new Assert\Positive());
+        $metadata->addPropertyConstraint('price', new Assert\NotNull());
+
     }
 }

@@ -48,4 +48,31 @@ class ObjectController
 
         return $response;
     }
+    
+    public function update(Request $request, ValidatorInterface $validator) {
+        $oid = $request->query->get('oid');
+        $content = $request->getContent();
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        if (array_key_exists($oid, Objects::$stubObjects)) {
+            $json_decodedContent = json_decode($content);
+            $object = new MObject($json_decodedContent);
+            $errors = $validator->validate($object);
+        
+            if (count($errors)) {
+                $humanized_errors = Validator::humanize($errors);
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                $response->setContent(json_encode($humanized_errors));
+            } else {
+                $response->setStatusCode(Response::HTTP_OK);
+                $response->setContent('"Ok"');
+            }
+        } else {
+            $response->setStatusCode(Response::HTTP_NOT_FOUND);
+            $response->setContent('"Not Found"');
+        }
+
+        return $response;
+    }
 }
