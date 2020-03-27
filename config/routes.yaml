@@ -10,3 +10,6 @@ update-object:
 delete-object:
    path: /delete-object
    controller: App\Controller\ObjectController::delete
+get-taxi:
+   path: /get-taxi
+   controller: App\Controller\TaxiController::get
