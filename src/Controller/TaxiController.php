@@ -4,12 +4,19 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Stubs\Taxies;
 use App\Entity\Taxi;
 use App\Common\Validator;
 
+/**
+ * @Route("/api", name="taxi_api")
+ */
 class TaxiController
 {
+    /**
+     * @Route("/taxi", name="taxi", methods={"GET"})
+     */
     public function get(Request $request)
     {
         $aid = $request->query->get('aid');
@@ -31,10 +38,12 @@ class TaxiController
         
         return $response;
     }
-
+    /**
+     * @Route("/taxi", name="taxi_add", methods={"POST"})
+     */
     public function add(Request $request, ValidatorInterface $validator) {
         $content = $request->getContent();
-        $object = new MTaxi(json_decode($content));
+        $object = new Taxi(json_decode($content));
         $errors = $validator->validate($object);
         $result;
         $code;
@@ -55,7 +64,9 @@ class TaxiController
 
         return $response;
     }
-    
+    /**
+     * @Route("/taxi", name="taxi_update", methods={"PUT"})
+     */
     public function update(Request $request, ValidatorInterface $validator) {
         $aid = $request->query->get('aid');
         $content = $request->getContent();
@@ -66,7 +77,7 @@ class TaxiController
 
         if (array_key_exists($aid, Taxies::$stubObjects)) {
             $json_decodedContent = json_decode($content);
-            $object = new MTaxi($json_decodedContent);
+            $object = new Taxi($json_decodedContent);
             $errors = $validator->validate($object);
         
             if (count($errors)) {
@@ -87,7 +98,9 @@ class TaxiController
 
         return $response;
     }
-
+    /**
+     * @Route("/taxi", name="taxi_delete", methods={"DELETE"})
+     */
     public function delete(Request $request)
     {
         $aid = $request->query->get('aid');

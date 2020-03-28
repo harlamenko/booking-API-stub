@@ -4,12 +4,19 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Stubs\Objects;
 use App\Entity\Obj;
 use App\Common\Validator;
 
+/**
+ * @Route("/api", name="object_api")
+ */
 class ObjectController
 {
+    /**
+     * @Route("/objects", name="objects", methods={"GET"})
+     */
     public function get(Request $request)
     {
         $oid = $request->query->get('oid');
@@ -31,10 +38,12 @@ class ObjectController
         
         return $response;
     }
-
+    /**
+     * @Route("/objects", name="objects_add", methods={"POST"})
+     */
     public function add(Request $request, ValidatorInterface $validator) {
         $content = $request->getContent();
-        $object = new MObject(json_decode($content));
+        $object = new Obj(json_decode($content));
         $errors = $validator->validate($object);
         $result;
         $code;
@@ -55,7 +64,9 @@ class ObjectController
 
         return $response;
     }
-    
+    /**
+     * @Route("/objects", name="objects_update", methods={"PUT"})
+     */
     public function update(Request $request, ValidatorInterface $validator) {
         $oid = $request->query->get('oid');
         $content = $request->getContent();
@@ -66,7 +77,7 @@ class ObjectController
 
         if (array_key_exists($oid, Objects::$stubObjects)) {
             $json_decodedContent = json_decode($content);
-            $object = new MObject($json_decodedContent);
+            $object = new Obj($json_decodedContent);
             $errors = $validator->validate($object);
         
             if (count($errors)) {
@@ -87,7 +98,9 @@ class ObjectController
 
         return $response;
     }
-
+    /**
+     * @Route("/objects", name="objects_delete", methods={"DELETE"})
+     */
     public function delete(Request $request)
     {
         $oid = $request->query->get('oid');

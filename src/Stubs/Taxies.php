@@ -3,7 +3,7 @@ namespace App\Stubs;
 
 class Taxies {
     const aid = 1;
-    static $stubObjects = [Taxi::aid => '{
+    static $stubObjects = [Taxies::aid => '{
         "name": "Tesla model S",
         "type": "Стандартное такси",
         "sits": "До 3",
