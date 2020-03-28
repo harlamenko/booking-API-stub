@@ -1,0 +1,1690 @@
+{
+	"info": {
+		"_postman_id": "e48ea2b5-6115-41ac-a49c-d024478b633f",
+		"name": "booking-stub-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "object",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/objects?oid=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"objects"
+							],
+							"query": [
+								{
+									"key": "oid",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:03 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}"
+						},
+						{
+							"name": "get 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:16 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						}
+					]
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/objects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"objects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:43 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "add 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:31 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 123\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/objects?oid=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"objects"
+							],
+							"query": [
+								{
+									"key": "oid",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update 404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:18:15 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						},
+						{
+							"name": "update 400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:18:28 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "update 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:58 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/objects?oid=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"objects"
+							],
+							"query": [
+								{
+									"key": "oid",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete 200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:18:42 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
+						},
+						{
+							"name": "delete 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:18:52 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4d94ab6f-218f-44e5-9184-285955466341",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9b4bd16-4521-44ac-9d97-ba9f2f836aeb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "taxi",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/taxi?aid=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"taxi"
+							],
+							"query": [
+								{
+									"key": "aid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get status:404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:12:55 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						},
+						{
+							"name": "get status:200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:10:29 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "233"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}"
+						}
+					]
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/taxi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"taxi"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add status: 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:14:13 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "add: status 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:13:51 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/taxi?aid=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"taxi"
+							],
+							"query": [
+								{
+									"key": "aid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update status: 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:15:09 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
+						},
+						{
+							"name": "update status: 404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=33",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "33"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:15:24 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						},
+						{
+							"name": "update status: 400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:15:46 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/taxi?aid=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"taxi"
+							],
+							"query": [
+								{
+									"key": "aid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete status: 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:16:15 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								}
+							],
+							"cookie": [],
+							"body": "\"Not Found\""
+						},
+						{
+							"name": "delete status: 200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:16:04 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2d73d8d-0af4-40ea-9b25-b8126c99e7f4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff2d3a6c-3829-46ea-9dae-be9c4ae72cf3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": \"qwerty1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"registration"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": \"qwerty1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/registration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"registration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 14:13:06 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"a9a09ba678c6dbf0fe55aa1cd7d0260fc9e6590d32a7747ff3d724f529609ae99d542ddea2de1a5d7024cc04acd324c7b19aa5ac73daf8953a1502ae26d0ed96\"\n}"
+						},
+						{
+							"name": "register 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/registration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"registration"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 14:16:01 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"password\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": \"qwerty1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 14:15:11 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"password\",\n            \"message\": \"This value is too short. It should have 1 character or more.\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "login 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"vasya\",\n\t\"password\": \"qwerty1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 14:14:45 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"a9a09ba678c6dbf0fe55aa1cd7d0260fc9e6590d32a7747ff3d724f529609ae99d542ddea2de1a5d7024cc04acd324c7b19aa5ac73daf8953a1502ae26d0ed96\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
