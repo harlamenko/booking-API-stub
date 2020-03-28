@@ -1,10 +1,10 @@
 <?php
-namespace App\Models;
+namespace App\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MObject {
+class Obj {
     public $phone_number = '';
     public $object_name = '';
     public $stars = 0;

@@ -1,10 +1,10 @@
 <?php
-namespace App\Models;
+namespace App\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MTaxi {
+class Taxi {
     public $name = '';
     public $type = '';
     public $sits = '';

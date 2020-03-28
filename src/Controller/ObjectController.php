@@ -5,8 +5,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Stubs\Objects;
-use App\Models\MObject;
-use App\Entity\Validator;
+use App\Entity\Obj;
+use App\Common\Validator;
 
 class ObjectController
 {

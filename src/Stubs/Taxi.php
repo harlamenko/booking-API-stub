@@ -1,7 +1,7 @@
 <?php
 namespace App\Stubs;
 
-class Taxi {
+class Taxies {
     const aid = 1;
     static $stubObjects = [Taxi::aid => '{
         "name": "Tesla model S",

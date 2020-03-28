@@ -4,9 +4,9 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Stubs\Taxi;
-use App\Models\MTaxi;
-use App\Entity\Validator;
+use App\Stubs\Taxies;
+use App\Entity\Taxi;
+use App\Common\Validator;
 
 class TaxiController
 {
@@ -18,8 +18,8 @@ class TaxiController
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
-        if (array_key_exists($aid, Taxi::$stubObjects)) {
-            $object = Taxi::$stubObjects[$aid];
+        if (array_key_exists($aid, Taxies::$stubObjects)) {
+            $object = Taxies::$stubObjects[$aid];
             $code = Response::HTTP_OK;
         } else {
             $object = '"Not Found"';
@@ -47,7 +47,7 @@ class TaxiController
             $result = json_encode($humanized_errors);
         } else {
             $code = Response::HTTP_OK;
-            $result = '{"id": ' . Taxi::aid . '}';
+            $result = '{"id": ' . Taxies::aid . '}';
         }
 
         $response->setContent($result);
@@ -64,7 +64,7 @@ class TaxiController
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
-        if (array_key_exists($aid, Taxi::$stubObjects)) {
+        if (array_key_exists($aid, Taxies::$stubObjects)) {
             $json_decodedContent = json_decode($content);
             $object = new MTaxi($json_decodedContent);
             $errors = $validator->validate($object);
@@ -96,7 +96,7 @@ class TaxiController
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
-        if (array_key_exists($aid, Taxi::$stubObjects)) {
+        if (array_key_exists($aid, Taxies::$stubObjects)) {
             $content = '"Ok"';
             $code = Response::HTTP_OK;
         } else {
