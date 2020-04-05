@@ -15,6 +15,10 @@ class Responsible
         return Responsible::response(Validator::humanize($errors), Response::HTTP_BAD_REQUEST);
     }
     
+    static function formNotAcceptable($body) {
+        return Responsible::response($body, Response::HTTP_NOT_ACCEPTABLE);
+    }
+    
     static function response($data, $status = Response::HTTP_OK, $headers = [])
     {
         $response = new Response(json_encode($data, JSON_UNESCAPED_UNICODE));

@@ -5,46 +5,56 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
+use App\Common\Responsible;
 use App\Common\Validator;
+use App\Repository\UserRepository;
 
-/**
- * @Route("/api", name="auth_api")
- */
-class AuthController {
+class AuthController extends AbstractController 
+{
     /**
-     * @Route("/registration", name="register", methods={"POST"})
+     * @Route("/register", name="register", methods={"POST"})
      */
-    public function register(Request $request, ValidatorInterface $validator) {
-        $content = $request->getContent();
-        $decoded_content = json_decode($content);
-        $auth = new User($decoded_content->username, $decoded_content->password);
-        $errors = $validator->validate($auth);
-        $result; $code;
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+    public function register(
+        Request $request,
+        ValidatorInterface $validator,
+        UserPasswordEncoderInterface $encoder,
+        JWTTokenManagerInterface $JWTManager,
+        UserRepository $userRepository
+    ) {
+        $em = $this->getDoctrine()->getManager();
+        $request = Responsible::transformJsonBody($request);
+        $username = $request->get('username');
+        $password = $request->get('password');
+
+        $user = new User($username);
+        $user->setPassword($encoder->encodePassword($user, $password));
+        $user->setUsername($username);
+        
+        if (count($userRepository->findBy(['username' => $user->getUsername()]))) {
+            return Responsible::formNotAcceptable('Пользователь с таким логином уже зарегистрирован!');
+        }
+        
+        $errors = $validator->validate($user);
 
         if (count($errors)) {
-            $humanized_errors = Validator::humanize($errors);
-            $code = Response::HTTP_BAD_REQUEST;
-            $result = json_encode($humanized_errors);
-        } else {
-            $code = Response::HTTP_OK;
-            $result = json_encode([
-                "accessToken" => "a9a09ba678c6dbf0fe55aa1cd7d0260fc9e6590d32a7747ff3d724f529609ae99d542ddea2de1a5d7024cc04acd324c7b19aa5ac73daf8953a1502ae26d0ed96"
-            ]);
+            return Responsible::formBadRequest($errors);
         }
-
-        $response->setContent($result);
-        $response->setStatusCode($code);
-
-        return $response;
+        
+        $em->persist($user);
+        $em->flush();
+        return Responsible::response([
+            'token' => $JWTManager->create($user)
+        ]);
     }
-    /**
-     * @Route("/login", name="login", methods={"POST"})
-     */
-    public function login(Request $request, ValidatorInterface $validator) {
-        return $this->register($request, $validator);
+
+    public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
+    {
+        return new JsonResponse(['token' => $JWTManager->create($user)]);
     }
-    
 }

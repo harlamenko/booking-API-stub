@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e48ea2b5-6115-41ac-a49c-d024478b633f",
+		"_postman_id": "0f416c97-cd28-4502-bbe6-3db64cf0edb1",
 		"name": "booking-stub-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,6 +11,16 @@
 				{
 					"name": "get",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -33,62 +43,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "get 200",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8000/api/objects?oid=123",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8000",
-									"path": [
-										"api",
-										"objects"
-									],
-									"query": [
-										{
-											"key": "oid",
-											"value": "123"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 28 Mar 2020 12:17:03 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.4.4"
-								},
-								{
-									"key": "X-Robots-Tag",
-									"value": "noindex"
-								},
-								{
-									"key": "Content-Length",
-									"value": "323"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}"
-						},
 						{
 							"name": "get 404",
 							"originalRequest": {
@@ -144,12 +98,78 @@
 							],
 							"cookie": [],
 							"body": "\"Not Found\""
+						},
+						{
+							"name": "get 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:03 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2,\n    \"price\": 200\n}"
 						}
 					]
 				},
 				{
 					"name": "add",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -175,65 +195,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "add 400",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8000/api/objects",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8000",
-									"path": [
-										"api",
-										"objects"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 28 Mar 2020 12:17:43 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.4.4"
-								},
-								{
-									"key": "X-Robots-Tag",
-									"value": "noindex"
-								},
-								{
-									"key": "Content-Length",
-									"value": "80"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
-						},
 						{
 							"name": "add 200",
 							"originalRequest": {
@@ -292,12 +253,81 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 123\n}"
+						},
+						{
+							"name": "add 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+78888888888\",\n    \"object_name\": \"Odnushka\",\n    \"stars\": 0,\n    \"host_name\": \"Vasya\",\n    \"country\": \"Uganda\",\n    \"city\": \"Bombo\",\n    \"street\": \"Lenina\",\n    \"house_number\": 3,\n    \"room\": null,\n    \"guests_count\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/objects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:17:43 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
 						}
 					]
 				},
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -530,6 +560,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -552,62 +592,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "delete 200",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8000/api/objects?oid=123",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8000",
-									"path": [
-										"api",
-										"objects"
-									],
-									"query": [
-										{
-											"key": "oid",
-											"value": "123"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 28 Mar 2020 12:18:42 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.4.4"
-								},
-								{
-									"key": "X-Robots-Tag",
-									"value": "noindex"
-								},
-								{
-									"key": "Content-Length",
-									"value": "4"
-								}
-							],
-							"cookie": [],
-							"body": "\"Ok\""
-						},
 						{
 							"name": "delete 404",
 							"originalRequest": {
@@ -664,6 +648,62 @@
 							],
 							"cookie": [],
 							"body": "\"Not Found\""
+						},
+						{
+							"name": "delete 200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/objects?oid=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"objects"
+									],
+									"query": [
+										{
+											"key": "oid",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:18:42 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
 						}
 					]
 				}
@@ -701,6 +741,16 @@
 				{
 					"name": "get",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -840,6 +890,16 @@
 				{
 					"name": "add",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -988,6 +1048,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -1019,71 +1089,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "update status: 200",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8000/api/taxi?aid=1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8000",
-									"path": [
-										"api",
-										"taxi"
-									],
-									"query": [
-										{
-											"key": "aid",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 28 Mar 2020 12:15:09 GMT"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.4.4"
-								},
-								{
-									"key": "X-Robots-Tag",
-									"value": "noindex"
-								},
-								{
-									"key": "Content-Length",
-									"value": "4"
-								}
-							],
-							"cookie": [],
-							"body": "\"Ok\""
-						},
 						{
 							"name": "update status: 404",
 							"originalRequest": {
@@ -1213,12 +1218,87 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"invalidFields\": [\n        {\n            \"field\": \"price\",\n            \"message\": \"This value should not be null.\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "update status: 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Tesla model S\",\n    \"type\": \"Стандартное такси\",\n    \"sits\": \"До 3\",\n    \"luggage\": \"До 3\",\n    \"meeting\": true,\n    \"service\": \"TK Milia\",\n    \"price\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/taxi?aid=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"taxi"
+									],
+									"query": [
+										{
+											"key": "aid",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Mar 2020 12:15:09 GMT"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.4"
+								},
+								{
+									"key": "X-Robots-Tag",
+									"value": "noindex"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"Ok\""
 						}
 					]
 				},
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -1401,15 +1481,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/registration",
+							"raw": "http://localhost:8000/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"api",
-								"registration"
+								"register"
 							]
 						}
 					},
@@ -1429,7 +1508,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8000/api/registration",
+									"raw": "http://localhost:8000/api/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1437,7 +1516,7 @@
 									"port": "8000",
 									"path": [
 										"api",
-										"registration"
+										"register"
 									]
 								}
 							},
@@ -1488,7 +1567,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8000/api/registration",
+									"raw": "http://localhost:8000/api/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1496,7 +1575,7 @@
 									"port": "8000",
 									"path": [
 										"api",
-										"registration"
+										"register"
 									]
 								}
 							},
@@ -1549,14 +1628,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/login",
+							"raw": "http://localhost:8000/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"api",
 								"login"
 							]
 						}
@@ -1684,6 +1762,38 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODYxMTA4MjYsImV4cCI6MTU4NjExNDQyNiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidmFzeWExMTExNCJ9.HXVTiNoazSQilhwMYkNu7PHe-CElyqrWAmVzRbMMsUwSA1ft0BEmYPGAT14WARKYsiSY-1XPd9W2ZEeyS8O1JHObSf44gKNL8kfoEq5kFinpaRK9kl6ngYs9XFTRZ_J2DGmC3HXLaaygD_S8-alOrbnr9_okx7ichUN9zc2mB5JTDE9HL5wZnAAt34rIO_mefKwfH7ua43ckQIEW8y86tFV6-ZEELY6nz0ir_ybeMI2-GRMKVjEek39Dk5SYMMAcny-JWlMTaDMNn2K9lxnTxfmKtWQldAqt8JnqBKtDoB9vUqO7TIOty3Xtr3hDE_VhqvNjLUg5pZ7WZeV5FMbnwhpfRutNSZLkGl6I5gvBOOzVZLdW9B4KB3jZ_B5-SyvX0q4oCIXz-gzpAwop40JyBWjXG5qYZ20N_oKs1uWMZ4DunkTJs-ysbyL2ooPLJETQbo_3ztAzBeNZ1fKkYVwKiUr1yHLzxudO5-xFvdhLYzK6s-Xbuia0JQZnmmHsTbU7CkzRPRfPIXXWRt2sqGAzcXhkk7jfU3m9NNPNkjcxTHIvHw8QhJuRR-9s7J0NChGVOgJGJC6yWMXtMXUCoSl5j076LZlCUNJnF9x7KLlDhgU83872SBh-vNFu68AkavHB-q000RDqG2vebLeBFKhrRyGc2_A2xqHaJOR4FENPku8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8cb9ea80-19f9-4eaf-b31e-28ff29050669",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8509bd22-9217-4042-8f85-67c4a3bea8e4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"protocolProfileBehavior": {}
