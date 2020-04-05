@@ -1,35 +1,160 @@
 <?php
+
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Taxi {
-    public $name = '';
-    public $type = '';
-    public $sits = '';
-    public $luggage = '';
-    public $service = '';
-    public $meeting = false;
-    public $price = null;
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\TaxiRepository")
+ */
+class Taxi implements \JsonSerializable
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
-    public function __construct($obj) {
-        if ($obj) {
-            $objArr = (array)$obj;
-            $this->name = $this->getV($objArr, 'name');
-            $this->type = $this->getV($objArr, 'type');
-            $this->sits = $this->getV($objArr, 'sits');
-            $this->luggage = $this->getV($objArr, 'luggage');
-            $this->meeting = $this->getV($objArr, 'meeting');
-            $this->service = $this->getV($objArr, 'service');
-            $this->price = $this->getV($objArr, 'price');
-        }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sits;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $luggage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $service;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $meeting = false;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
-    private function getV($obj, $prop) {
-        return array_key_exists($prop, $obj) ? $obj[$prop] : null;
+    public function getName(): ?string
+    {
+        return $this->name;
     }
 
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSits(): ?string
+    {
+        return $this->sits;
+    }
+
+    public function setSits(?string $sits): self
+    {
+        $this->sits = $sits;
+
+        return $this;
+    }
+
+    public function getLuggage(): ?string
+    {
+        return $this->luggage;
+    }
+
+    public function setLuggage(?string $luggage): self
+    {
+        $this->luggage = $luggage;
+
+        return $this;
+    }
+
+    public function getService(): ?string
+    {
+        return $this->service;
+    }
+
+    public function setService(?string $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    public function getMeeting(): ?bool
+    {
+        return $this->meeting;
+    }
+
+    public function setMeeting($meeting): self
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+    
+    public function __construct() { }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'type' => $this->getType(),
+            'sits' => $this->getSits(),
+            'luggage' => $this->getLuggage(),
+            'service' => $this->getService(),
+            'meeting' => $this->getMeeting(),
+            'price' => $this->getPrice(),
+        ];
+    }
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('name', new Assert\Length(['min' => 1]));
