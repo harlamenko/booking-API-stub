@@ -5,121 +5,121 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Stubs\Objects;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Obj;
 use App\Common\Validator;
+use App\Common\Responsible;
+use App\Repository\ObjRepository;
 
 /**
  * @Route("/api", name="object_api")
  */
-class ObjectController
+class ObjectController extends AbstractController
 {
     /**
      * @Route("/objects", name="objects", methods={"GET"})
      */
-    public function get(Request $request)
+    public function getObj(Request $request, ObjRepository $objRepository)
     {
         $oid = $request->query->get('oid');
-        $object;
-        $code;
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        if (array_key_exists($oid, Objects::$stubObjects)) {
-            $object = Objects::$stubObjects[$oid];
-            $code = Response::HTTP_OK;
-        } else {
-            $object = '"Not Found"';
-            $code = Response::HTTP_NOT_FOUND;
+        $obj = $objRepository->find($oid);
+        
+        if (!$obj) {
+            return Responsible::formNotFound();
         }
-        
-        $response->setContent($object);
-        $response->setStatusCode($code);
-        
-        return $response;
+
+        return Responsible::response($obj);
     }
     /**
      * @Route("/objects", name="objects_add", methods={"POST"})
      */
-    public function add(Request $request, ValidatorInterface $validator) {
-        $content = $request->getContent();
-        $object = new Obj(json_decode($content));
-        $errors = $validator->validate($object);
-        $result;
-        $code;
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+    public function addObj(
+        Request $request,
+        ValidatorInterface $validator,
+        EntityManagerInterface $entityManager,
+        ObjRepository $objRepository
+    ) {
+        $request = Responsible::transformJsonBody($request);
+        $obj = new Obj();
+
+        $obj->setPhoneNumber($request->get('phone_number'));
+        $obj->setObjectName($request->get('object_name'));
+        $obj->setHostName($request->get('host_name'));
+        $obj->setCountry($request->get('country'));
+        $obj->setCity($request->get('city'));
+        $obj->setStreet($request->get('street'));
+        $obj->setStars($request->get('stars'));
+        $obj->setRoom($request->get('room'));
+        $obj->setGuestsCount($request->get('guests_count'));
+        $obj->setPrice($request->get('price'));
+        $obj->setHouseNumber($request->get('house_number'));
+
+        $errors = $validator->validate($obj);
 
         if (count($errors)) {
-            $humanized_errors = Validator::humanize($errors);
-            $code = Response::HTTP_BAD_REQUEST;
-            $result = json_encode($humanized_errors);
-        } else {
-            $code = Response::HTTP_OK;
-            $result = '{"id": ' . Objects::oid . '}';
-        }
+            return Responsible::formBadRequest($errors);
+        }            
 
-        $response->setContent($result);
-        $response->setStatusCode($code);
-
-        return $response;
+        $entityManager->persist($obj);
+        $entityManager->flush();
+    
+        return Responsible::response(['id' => $obj->getId()]);
     }
     /**
      * @Route("/objects", name="objects_update", methods={"PUT"})
      */
-    public function update(Request $request, ValidatorInterface $validator) {
+    public function updateObj(
+        Request $request,
+        ValidatorInterface $validator,
+        EntityManagerInterface $entityManager,
+        ObjRepository $objRepository
+    ) {
         $oid = $request->query->get('oid');
-        $content = $request->getContent();
-        $result;
-        $code;
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        if (array_key_exists($oid, Objects::$stubObjects)) {
-            $json_decodedContent = json_decode($content);
-            $object = new Obj($json_decodedContent);
-            $errors = $validator->validate($object);
-        
-            if (count($errors)) {
-                $humanized_errors = Validator::humanize($errors);
-                $code = Response::HTTP_BAD_REQUEST;
-                $result = json_encode($humanized_errors);
-            } else {
-                $code = Response::HTTP_OK;
-                $result = '"Ok"';
-            }
-        } else {
-            $code = Response::HTTP_NOT_FOUND;
-            $result = '"Not Found"';
+        $obj = $objRepository->find($oid);
+        if (!$obj) {
+            return Responsible::formNotFound();
         }
 
-        $response->setContent($result);
-        $response->setStatusCode($code);
+        $request = Responsible::transformJsonBody($request);
 
-        return $response;
+        $obj->setPhoneNumber($request->get('phone_number'));
+        $obj->setObjectName($request->get('object_name'));
+        $obj->setHostName($request->get('host_name'));
+        $obj->setCountry($request->get('country'));
+        $obj->setCity($request->get('city'));
+        $obj->setStreet($request->get('street'));
+        $obj->setStars($request->get('stars'));
+        $obj->setRoom($request->get('room'));
+        $obj->setGuestsCount($request->get('guests_count'));
+        $obj->setPrice($request->get('price'));
+        $obj->setHouseNumber($request->get('house_number'));
+        $errors = $validator->validate($obj);
+        if (count($errors)) {
+            return Responsible::formBadRequest($errors);
+        }
+        
+        $entityManager->flush();
+    
+        return Responsible::response('Ok');
     }
     /**
      * @Route("/objects", name="objects_delete", methods={"DELETE"})
      */
-    public function delete(Request $request)
-    {
+    public function deleteObj(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        ObjRepository $objRepository
+    ) {
         $oid = $request->query->get('oid');
-        $content;
-        $code;
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        if (array_key_exists($oid, Objects::$stubObjects)) {
-            $content = '"Ok"';
-            $code = Response::HTTP_OK;
-        } else {
-            $content = '"Not Found"';
-            $code = Response::HTTP_NOT_FOUND;
+        $obj = $objRepository->find($oid);
+        if (!$obj) {
+            return Responsible::formNotFound();
         }
-        
-        $response->setContent($content);
-        $response->setStatusCode($code);
 
-        return $response;
+        $entityManager->remove($obj);
+        $entityManager->flush();
+
+        return Responsible::response('Ok');
     }
 }
